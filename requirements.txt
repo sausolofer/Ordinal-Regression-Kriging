@@ -1,0 +1,23 @@
+# pip-only installation.
+#
+# mord does not build under recent setuptools. If the install fails with
+# "AttributeError: install_layout", install it on its own first:
+#
+#   SETUPTOOLS_USE_DISTUTILS=stdlib pip install mord
+#
+# Versions match Section 3.6 of the article. Python 3.11.5.
+
+scikit-learn==1.9.0
+statsmodels==0.14.6
+xgboost==3.2.0
+mord==0.7
+pykrige==1.7.3
+libpysal==4.14.1
+esda==2.9.0
+
+numpy
+pandas
+scipy
+shap
+matplotlib
+geopandas   # sólo para los mapas (scripts 06 a 08)

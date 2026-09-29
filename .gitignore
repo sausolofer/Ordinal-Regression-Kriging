@@ -1,0 +1,32 @@
+# Generated outputs. The dataset in data/ IS tracked, so the repository
+# runs out of the box; only results are ignored.
+resultados/*
+figuras/*
+!resultados/.gitkeep
+!figuras/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Caches
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Credentials
+.env
+
+# Geometrías municipales del INEGI: pesan cientos de MB y tienen su propia
+# licencia, así que no se versionan. Sólo se conserva su README.
+data/shapefile/*
+!data/shapefile/README.md

@@ -1,0 +1,81 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the article."
+title: "Ordinal Regression Kriging: analysis code for municipal dengue risk prediction in Mexico"
+abstract: >-
+  Code and data reproducing the analysis of Ordinal Regression Kriging (ORK),
+  a spatial prediction framework that extends regression kriging to ordinal
+  response variables by combining the conditional expectation of an ordinal
+  regression model with ordinary kriging of its continuous out-of-fold
+  residuals. Includes the nested validation under random and spatially blocked
+  schemes, the comparison against baselines, the sensitivity analysis to the
+  category coding, and the SHAP interpretability analysis.
+type: software
+version: 1.0.0
+date-released: "2026-XX-XX"
+license: MIT
+repository-code: "https://github.com/sausolofer/Ordinal-Regression-Kriging"
+keywords:
+  - ordinal regression
+  - regression kriging
+  - geostatistics
+  - spatial epidemiology
+  - dengue
+  - machine learning
+authors:
+  - family-names: Wences
+    given-names: Giovanni
+    orcid: "https://orcid.org/0000-0003-3745-2118"
+    affiliation: >-
+      Faculty of Mathematics No. 2, Autonomous University of Guerrero, and
+      Metropolitan Autonomous University, Mexico
+  - family-names: Solorio-Fernández
+    given-names: Saúl
+    orcid: "https://orcid.org/0000-0002-4674-852X"
+    email: sausolofer@inaoep.mx
+    affiliation: >-
+      Faculty of Mathematics No. 2, Autonomous University of Guerrero, and
+      Instituto Nacional de Astrofísica, Óptica y Electrónica, Mexico
+  - family-names: Herrera-Zúñiga
+    given-names: Leonardo David
+    affiliation: "HS Estudios Farmacoeconómicos, Mexico City, Mexico"
+  - family-names: Hernández-López
+    given-names: Eymard
+    orcid: "https://orcid.org/0000-0002-9285-4219"
+    affiliation: >-
+      University of Tennessee at Chattanooga, USA, and TecNM-TESOEM, Mexico
+preferred-citation:
+  type: article
+  title: >-
+    Continuous Spatial Prediction of Dengue Risk Using Integrated
+    Municipal-Level Data: An Ordinal Regression Kriging Approach
+  journal: "Acta Tropica"
+  year: 2026
+  authors:
+    - family-names: Wences
+      given-names: Giovanni
+      orcid: "https://orcid.org/0000-0003-3745-2118"
+    - family-names: Solorio-Fernández
+      given-names: Saúl
+      orcid: "https://orcid.org/0000-0002-4674-852X"
+    - family-names: Herrera-Zúñiga
+      given-names: Leonardo David
+    - family-names: Hernández-López
+      given-names: Eymard
+      orcid: "https://orcid.org/0000-0002-9285-4219"
+references:
+  - type: dataset
+    title: >-
+      Municipal dengue risk dataset for Mexico, 2022: incidence, climatological,
+      environmental, sociodemographic, socioeconomic and agricultural covariates
+    doi: "10.5281/zenodo.23004274"
+    year: 2026
+    version: v3
+    authors:
+      - family-names: Wences
+        given-names: Giovanni
+      - family-names: Solorio-Fernández
+        given-names: Saúl
+      - family-names: Herrera-Zúñiga
+        given-names: Leonardo David
+      - family-names: Hernández-López
+        given-names: Eymard

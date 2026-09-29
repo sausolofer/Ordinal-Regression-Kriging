@@ -1,0 +1,37 @@
+variable,role,type,units,description,source,reference_year,min,max,distinct_values,missing,notes
+Estado,identifier,string,name,State (entidad federativa).,"INEGI, Population and Housing Census 2020",2020,,,32,0,"With Municipio it forms the unique key: 1,050 rows but only 1,001 distinct municipality names, since names repeat across states."
+Municipio,identifier,string,name,Municipality name.,"INEGI, Population and Housing Census 2020",2020,,,1001,0,No INEGI municipal code (CVEGEO) is included; joining to other sources requires name matching.
+Rate_2022,source variable,float,"cases per 100,000 inhabitants",Reported dengue incidence rate in 2022.,"General Directorate of Epidemiology, via the Supporting Information of Mendoza-Cano et al. (2025)",2022,0.0,3835.6,345,0,Source of DRL. Not a predictor: must be excluded from any model that predicts DRL.
+lon_mun,coordinate,float,decimal degrees,"Longitude of the municipal seat (cabecera municipal), WGS 84 (EPSG:4326).","INEGI, Population and Housing Census 2020",2020,-116.8045,-86.9204,1050,0,"Coordinates locate the municipal seat, not the areal centroid of the municipality. Kriging uses great-circle distances on these coordinates."
+lat_mun,coordinate,float,decimal degrees,"Latitude of the municipal seat (cabecera municipal), WGS 84 (EPSG:4326).","INEGI, Population and Housing Census 2020",2020,14.6325,32.4236,1050,0,"Coordinates locate the municipal seat, not the areal centroid of the municipality. Kriging uses great-circle distances on these coordinates."
+ELEV,covariate,float,m,Mean elevation above mean sea level.,"INEGI, Population and Housing Census 2020",2020,2.0,3205.0,903,0,
+PREC,covariate,float,mm,Municipal mean daily precipitation during 2022.,CONAGUA (National Water Commission),2022,0.0,61.5304,1036,0,
+TEMP,covariate,float,degrees Celsius,Municipal mean annual temperature during 2022.,CONAGUA (National Water Commission),2022,9.374,41.9156,1044,0,
+POPDEN,covariate,float,inhabitants per km2,Municipal population density.,"INEGI, Population and Housing Census 2020",2020,0.3705,17522.7099,1050,0,
+HHSIZE,covariate,float,persons,Mean occupants per inhabited private dwelling.,"INEGI, Population and Housing Census 2020",2020,2.6976,6.231,1050,0,
+PIPWAT,covariate,float,percent,Inhabited private dwellings with piped water inside the dwelling.,"INEGI, Population and Housing Census 2020",2020,1.0791,99.6952,1050,0,
+OCCBED,covariate,float,persons,Mean occupants per bedroom.,"INEGI, Population and Housing Census 2020",2020,1.1443,3.277,1048,0,
+SANIT,covariate,float,percent,Inhabited private dwellings with sanitation facilities.,"INEGI, Population and Housing Census 2020",2020,36.7282,100.0,1045,0,
+WSEP,covariate,float,percent,Inhabited private dwellings practising household waste separation.,"INEGI, Population and Housing Census 2020",2020,0.0,100.0,1044,0,
+MSW,covariate,float,kg per day,Mean daily municipal solid waste collected.,"INEGI, Population and Housing Census 2020",2020,15.0,3020547.0,419,0,
+EAP,covariate,float,percent,Population aged 12 and older that is economically active.,"INEGI, Population and Housing Census 2020",2020,19.3989,76.3562,1050,0,
+NOEDU,covariate,float,percent,Population aged 15 and older with no formal education.,"INEGI, Population and Housing Census 2020",2020,0.8733,43.6235,1050,0,
+AVGSCH,covariate,float,years,"Mean years of schooling, population aged 15 and older.","INEGI, Population and Housing Census 2020",2020,3.5861,13.1115,1050,0,
+HEALTH,covariate,float,percent,Population affiliated with health care services.,"INEGI, Population and Housing Census 2020",2020,22.1258,97.5705,1050,0,
+WATANK,covariate,float,percent,Inhabited private dwellings with a rooftop water tank (tinaco).,"INEGI, Population and Housing Census 2020",2020,1.6599,97.7215,1050,0,
+CISTERN,covariate,float,percent,Inhabited private dwellings with a cistern (cisterna o aljibe).,"INEGI, Population and Housing Census 2020",2020,0.0,92.1875,1049,0,
+AWCROP,covariate,float,hectares,"Open-field annual crops, Autumn-Winter cycle: planted area.","INEGI / SIAP, agricultural statistics 2022",2022,3.0,6622.0,463,0,"Planted area, not a count: the values are continuous. Verify the exact SIAP series before reuse."
+ANNAREA,covariate,float,hectares,Total area planted with annual crops.,"INEGI / SIAP, agricultural statistics 2022",2022,0.025,209839.4177,1010,0,"Verified identity in all 1,050 rows: ANNAREA = RAINAREA + IRRAREA."
+RAINAREA,covariate,float,hectares,Rainfed planted area.,"INEGI / SIAP, agricultural statistics 2022",2022,0.0,208762.9677,913,0,Component of ANNAREA.
+IRRAREA,covariate,float,hectares,Irrigated planted area.,"INEGI / SIAP, agricultural statistics 2022",2022,0.0,117352.656,815,0,Component of ANNAREA.
+OFANN,covariate,float,hectares,Annual crops under open-field agriculture: planted area.,"INEGI / SIAP, agricultural statistics 2022",2022,0.0,247922.7665,1043,0,"Planted area, not a count: the values are continuous. Verify the exact SIAP series before reuse. Exceeds ANNAREA in some municipalities, so the two come from different series; the relationship should be documented."
+PRANN,covariate,float,hectares,Annual crops under protected agriculture: planted area.,"INEGI / SIAP, agricultural statistics 2022",2022,0.0,3725.1741,503,0,"Planted area, not a count: the values are continuous. Verify the exact SIAP series before reuse."
+OFPER,covariate,float,hectares,Perennial crops under open-field agriculture: planted area.,"INEGI / SIAP, agricultural statistics 2022",2022,0.0,135422.7716,1041,0,"Planted area, not a count: the values are continuous. Verify the exact SIAP series before reuse."
+PRPER,covariate,float,hectares,Perennial crops under protected agriculture: planted area.,"INEGI / SIAP, agricultural statistics 2022",2022,0.0,3423.1088,411,0,"Planted area, not a count: the values are continuous. Verify the exact SIAP series before reuse."
+STRCROP,covariate,float,hectares,Crops located in built-up areas: planted area.,"INEGI / SIAP, agricultural statistics 2022",2022,0.0,23525.3971,1018,0,"Planted area, not a count: the values are continuous. Verify the exact SIAP series before reuse. Input to SEAVI."
+POV,covariate,float,percent,Population living in poverty.,"CONEVAL, municipal poverty database 2020",2020,7.3,99.1,572,0,
+EXTPOV,covariate,float,percent,Population living in extreme poverty.,"CONEVAL, municipal poverty database 2020",2020,0.2,72.6,337,0,Input to both SEVI and SEAVI.
+MODPOV,covariate,float,percent,Population living in moderate poverty.,"CONEVAL, municipal poverty database 2020",2020,7.1,78.9,407,0,
+DRL,response,integer,ordered level 0-4,Dengue Risk Level.,Derived in this study,2022,0.0,4.0,5,0,"Level 0 = no reported cases (580 municipalities); levels 1-4 are the quartiles of the positive incidence distribution, cut-points 7.105, 24.15 and 73.00 cases per 100,000. Level 0 means no cases were reported, not that transmission was absent."
+SEVI,covariate (derived),float,standardised index,Socioeconomic vulnerability index.,Derived in this study,2020,-2.0716,8.223,1050,0,"First principal component of standardised EXTPOV, NOEDU and EAP."
+SEAVI,covariate (derived),float,standardised index,Socioenvironmental vulnerability index.,Derived in this study,2020/2022,-1.7159,4.9506,1050,0,"First principal component of standardised EXTPOV, STRCROP and WATANK."

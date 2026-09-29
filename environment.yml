@@ -1,0 +1,45 @@
+# Conda environment for the Ordinal Regression Kriging analysis.
+#
+#   conda env create -f environment.yml
+#   conda activate ork
+#
+# If mord fails to build (AttributeError: install_layout), install it
+# separately with the legacy distutils backend:
+#
+#   SETUPTOOLS_USE_DISTUTILS=stdlib pip install mord
+#
+# Versions are pinned to those reported in Section 3.6 of the article, so
+# that the environment described there and the one built from this file
+# are the same. Loosen them only if you accept that results may shift.
+
+name: ork
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.5
+
+  # Núcleo numérico
+  - numpy
+  - pandas
+  - scipy
+
+  # Modelos ordinales y aprendizaje automático
+  - scikit-learn=1.9.0
+  - statsmodels=0.14.6     # OrderedModel (Ordered Logit)
+  - xgboost=3.2.0
+
+  # Autocorrelación espacial
+  - libpysal=4.14.1
+  - esda=2.9.0             # Moran's I con inferencia por permutaciones
+
+  # Interpretabilidad
+  - shap
+
+  # Figuras y mapas
+  - matplotlib
+  - geopandas             # sólo para los mapas (scripts 06 a 08)
+
+  - pip
+  - pip:
+      - pykrige==1.7.3     # OrdinaryKriging, coordinates_type="geographic"
+      - mord==0.7          # LogisticAT, LogisticIT
