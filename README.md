@@ -118,36 +118,6 @@ The output file names of scripts 06 to 08 use the figure numbering of an earlier
 
 ---
 
-## Predictors compared
-
-Each outer partition scores nine predictors. The names in the third column are those used in the output tables.
-
-| | Predictor | Name in the code |
-|---|---|---|
-| Baselines | Constant: the median of the training response | `Trivial` |
-| | Geography only: median of the 8 nearest training municipalities | `kNN espacial` |
-| Covariates only | Median rule applied to P(Y = k) | `Base` |
-| | Rounded expected value E[Y], no kriging | `Base EV` |
-| | Rounded E[Y] with the calibrated threshold | `Base EV cal` |
-| Covariates + kriging | Kriging of discrete residuals, added to `Base` | `Metodo A` |
-| | Kriging of continuous residuals, added to E[Y] — **this is ORK** | `Metodo B` |
-| | ORK with the calibrated threshold | `Metodo B cal` |
-| | ORK under the alternative category coding | `Metodo B log` |
-
-The set is built so that each comparison isolates one thing. `Base EV` against `Base` isolates the effect of the decision rule; `Metodo B` against `Base EV` isolates the spatial contribution with the decision rule held fixed; `kNN espacial` against the covariate models shows how much of the performance geography alone accounts for; and `Trivial` establishes the floor, which matters because 55% of municipalities sit in level 0 and an exact-agreement metric flatters a constant predictor.
-
----
-
-## Analysis design
-
-**Two outer schemes, reported side by side.** The random scheme draws 50 stratified 80/20 partitions and estimates performance in a gap-filling regime, where the target municipality lies among municipalities with observed data. The spatial scheme partitions the municipal centroids into 5 contiguous blocks by *k*-means and holds one block out at a time, repeating the clustering 10 times with different seeds; it estimates performance when an entire region is unobserved. Blocks leaving fewer than 5 test or 30 training municipalities are skipped. Because the kriged correction is local by construction, its advantage is expected to be larger under the random scheme, and reporting only one of the two would misrepresent the method in one direction or the other.
-
-**Selection is separated from evaluation.** Within each outer training set, an inner cross-validation selects the ordinal model among five candidates, the theoretical variogram among four, and the retained predictors. The outer test set is used once, for evaluation. No held-out municipality participates in any selection step, and in particular the Spearman screening is recomputed inside every training set rather than once on the complete sample.
-
-**Distances are great-circle.** Kriging runs in PyKrige with `coordinates_type="geographic"`, so distances are computed on the sphere from longitude and latitude in decimal degrees. No planar projection is applied.
-
----
-
 ## Parameters
 
 Everything below is declared at the top of `scripts/01_validacion_anidada.py`.
